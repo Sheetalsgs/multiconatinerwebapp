@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  app1:
+    build: ./app1
+    ports:
+      - 7003:7000
+    volumes:
+      - .:/app1
+      - /app1/node_modules
+    command: npm run start:dev
+
+  app2: 
+    build: ./app2/
+    volumes:
+      - .:/app2
+      - /app2/node_modules
+    ports:
+      - 7004:7001
+    command: npm run start:dev
+    
+volumes:
+  db_data_container:
